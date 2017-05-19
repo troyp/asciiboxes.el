@@ -1,7 +1,7 @@
 asciiboxes.el --- Emacs interface to the boxes program
 --------------------------------------------------------------------
 
-Provides boxes [boxes][] functionality in Emacs.
+Provides [boxes][] functionality in Emacs.
 
 ### Variables
 
