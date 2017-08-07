@@ -28,6 +28,9 @@
 
 (provide 'asciiboxes)
 
+
+;; Variables
+
 (defvar asciiboxes-comment-alist
   '((c-mode            . "c-cmt2")
     (c++-mode          . "c-cmt2")
@@ -74,6 +77,9 @@ design for text-mode is used and then commented in a separate step.")
   (expand-file-name "asciiboxes-config"
                     (file-name-directory load-file-name))
   "The boxes config file to be used.")
+
+;; Private Functions
+
 (defun asciiboxes--read-comment-design ()
   (completing-read "Design: " (seq-uniq (mapcar #'cdr asciiboxes-comment-alist))))
 (defun asciiboxes--read-heading-design ()
@@ -84,12 +90,16 @@ design for text-mode is used and then commented in a separate step.")
 (defun asciiboxes--heading-design-by-mode-or-read ()
   (or (alist-get major-mode asciiboxes-headings-alist)
       (asciiboxes--read-heading-design)))
+
+;; Non-interactive Functions
 
 (defun asciiboxes-list ()
   "List all available boxes designs."
   (s-split "\\( \\|\t\\|\n\\)+"
            (shell-command-to-string
     (format "cat %s | sed -nr 's/BOX (.*)/\\1/p'" asciiboxes-config-file))))
+
+;; Commands
 
 (defun asciiboxes-box-region (beg end design)
   "Surround the region from BEG to END with a box of style DESIGN."
@@ -111,5 +121,5 @@ design for text-mode is used and then commented in a separate step.")
   (shell-command-on-region beg end
                            (format "%s -d %s" asciiboxes-boxes-command design)
                            nil t))
-
+
 ;;; asciiboxes ends here
