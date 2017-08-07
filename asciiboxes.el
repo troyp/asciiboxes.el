@@ -80,6 +80,8 @@ design for text-mode is used and then commented in a separate step.")
 
 ;; Private Functions
 
+(defun asciiboxes--read-box-design ()
+  (completing-read "Design: " (asciiboxes-list)))
 (defun asciiboxes--read-comment-design ()
   (completing-read "Design: " (seq-uniq (mapcar #'cdr asciiboxes-comment-alist))))
 (defun asciiboxes--read-heading-design ()
@@ -106,7 +108,7 @@ design for text-mode is used and then commented in a separate step.")
   (interactive
    (list (if (region-active-p) (region-beginning) (line-beginning-position))
          (if (region-active-p) (region-end) (line-end-position))
-         (completing-read "Design: " (asciiboxes-list))))
+         (asciiboxes--read-box-design)))
    (let ((cmd (format "%s -d %s" asciiboxes-boxes-command design)))
      (shell-command-on-region beg end cmd nil t)
      (message cmd)))
