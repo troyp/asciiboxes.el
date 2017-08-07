@@ -104,7 +104,7 @@ design for text-mode is used and then commented in a separate step.")
   "List all comment designs in `asciiboxes-comment-alist'."
   (seq-uniq (mapcar #'cdr asciiboxes-comment-alist)))
 (defun asciiboxes-list-heading-designs ()
-  "List all comment designs in `asciiboxes-heading-alist'."
+  "List all heading designs in `asciiboxes-heading-alist'."
   (seq-uniq (mapcar #'cdr asciiboxes-heading-alist)))
 
 ;; Commands
