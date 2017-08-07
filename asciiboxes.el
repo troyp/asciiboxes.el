@@ -72,7 +72,7 @@ design for text-mode is used and then commented in a separate step.")
 (defvar asciiboxes-boxes-command "/usr/bin/boxes" "The boxes command used by asciiboxes.")
 (defvar asciiboxes-config-file
   (expand-file-name "asciiboxes-config"
-                    (file-name-directory buffer-file-name))
+                    (file-name-directory load-file-name))
   "The boxes config file to be used.")
 
 (defun asciiboxes-list ()
