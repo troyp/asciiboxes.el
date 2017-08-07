@@ -74,6 +74,11 @@ design for text-mode is used and then commented in a separate step.")
   (expand-file-name "asciiboxes-config"
                     (file-name-directory load-file-name))
   "The boxes config file to be used.")
+(defun asciiboxes--read-comment-design ()
+  (completing-read "Design: " (seq-uniq (mapcar #'cdr asciiboxes-comment-alist))))
+(defun asciiboxes--comment-design-by-mode-or-read ()
+  (or (alist-get major-mode asciiboxes-comment-alist)
+      (asciiboxes--read-comment-design)))
 
 (defun asciiboxes-list ()
   "List all available boxes designs."
@@ -96,8 +101,8 @@ design for text-mode is used and then commented in a separate step.")
   (interactive
    (list (if (region-active-p) (region-beginning) (line-beginning-position))
          (if (region-active-p) (region-end) (line-end-position))
-         (or (alist-get major-mode asciiboxes-comment-alist)
-             (completing-read "Design: " (seq-uniq (mapcar #'cdr asciiboxes-comment-alist))))))
+         (asciiboxes--comment-design-by-mode-or-read)
+         ))
   (shell-command-on-region beg end
                            (format "%s -d %s" asciiboxes-boxes-command design)
                            nil t))
