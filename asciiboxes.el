@@ -53,7 +53,7 @@
     )
   "Default comment design by mode.")
 
-(defvar asciiboxes-headings-alist
+(defvar asciiboxes-heading-alist
   '((text-mode    . "simple")
     (c-mode       . "cc")
     (c++-mode     . "cc")
@@ -90,7 +90,7 @@ design for text-mode is used and then commented in a separate step.")
   (or (alist-get major-mode asciiboxes-comment-alist)
       (asciiboxes--read-comment-design)))
 (defun asciiboxes--heading-design-by-mode-or-read ()
-  (or (alist-get major-mode asciiboxes-headings-alist)
+  (or (alist-get major-mode asciiboxes-heading-alist)
       (asciiboxes--read-heading-design)))
 
 ;; Non-interactive Functions
@@ -104,8 +104,8 @@ design for text-mode is used and then commented in a separate step.")
   "List all comment designs in `asciiboxes-comment-alist'."
   (seq-uniq (mapcar #'cdr asciiboxes-comment-alist)))
 (defun asciiboxes-list-heading-designs ()
-  "List all comment designs in `asciiboxes-headings-alist'."
-  (seq-uniq (mapcar #'cdr asciiboxes-headings-alist)))
+  "List all comment designs in `asciiboxes-heading-alist'."
+  (seq-uniq (mapcar #'cdr asciiboxes-heading-alist)))
 
 ;; Commands
 
