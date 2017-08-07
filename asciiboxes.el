@@ -83,9 +83,9 @@ design for text-mode is used and then commented in a separate step.")
 (defun asciiboxes--read-box-design ()
   (completing-read "Design: " (asciiboxes-list)))
 (defun asciiboxes--read-comment-design ()
-  (completing-read "Design: " (seq-uniq (mapcar #'cdr asciiboxes-comment-alist))))
+  (completing-read "Design: " (asciiboxes-list-comment-designs)))
 (defun asciiboxes--read-heading-design ()
-  (completing-read "Design: " (seq-uniq (mapcar #'cdr asciiboxes-comment-alist))))
+  (completing-read "Design: " (asciiboxes-list-heading-designs)))
 (defun asciiboxes--comment-design-by-mode-or-read ()
   (or (alist-get major-mode asciiboxes-comment-alist)
       (asciiboxes--read-comment-design)))
@@ -100,6 +100,12 @@ design for text-mode is used and then commented in a separate step.")
   (s-split "\\( \\|\t\\|\n\\)+"
            (shell-command-to-string
     (format "cat %s | sed -nr 's/BOX (.*)/\\1/p'" asciiboxes-config-file))))
+(defun asciiboxes-list-comment-designs ()
+  "List all comment designs in `asciiboxes-comment-alist'."
+  (seq-uniq (mapcar #'cdr asciiboxes-comment-alist)))
+(defun asciiboxes-list-heading-designs ()
+  "List all comment designs in `asciiboxes-headings-alist'."
+  (seq-uniq (mapcar #'cdr asciiboxes-headings-alist)))
 
 ;; Commands
 
