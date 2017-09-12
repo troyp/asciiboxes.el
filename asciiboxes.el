@@ -127,6 +127,28 @@ design for text-mode is used and then commented in a separate step.")
      (shell-command-on-region beg end cmd nil t)
      (message cmd)))
 
+(defun asciiboxes-box-region-by-mode (beg end)
+  "Surround the region from BEG to END with a box according to major mode.
+
+Uses the design type for the mode given in `asciiboxes-heading-alist'. If no
+design is listed, a type may be chosen in the minibuffer."
+  (interactive
+   (list (if (region-active-p) (region-beginning) (line-beginning-position))
+         (if (region-active-p) (region-end) (line-end-position))))
+  (let* ((design (asciiboxes--heading-design-by-mode-or-read))
+         (cmd    (format "%s -d %s" asciiboxes-boxes-command design))
+         (beg-marker (make-marker))
+         (end-marker (make-marker)))
+    (set-marker beg-marker beg)
+    (set-marker end-marker end)
+    (set-marker-insertion-type end-marker t)
+    (shell-command-on-region beg end cmd nil t)
+    (message cmd)
+    (setq point (marker-position end-marker)
+          mark  (marker-position beg-marker))
+    (activate-mark)
+    (call-interactively #'indent-region)))
+
 (defun asciiboxes-comment (beg end design)
   "Comment the region from BEG to END, using style DESIGN."
   (interactive
