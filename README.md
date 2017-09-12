@@ -17,6 +17,8 @@ Provides [boxes][] functionality in Emacs.
 * `asciiboxes-list`: List all available boxes designs.
 * `asciiboxes-box-region`: Surround the region from `beg` to `end` with a box
   of style `design`.
+* `asciiboxes-box-region-by-mode`: Surround the region from `beg` to `end` with
+  a box according to `asciiboxes-headings-alist` and auto-indent.
 * `asciiboxes-comment` Comment the region from `beg` to `end`, using style
   `design`.
 
