@@ -60,6 +60,8 @@
     (c-mode       . "cc")
     (c++-mode     . "cc")
     (java-mode    . "cc")
+    (js-mode      . "cc")
+    (js2-mode     . "cc")
     (html-mode    . "html")
     (sh-mode      . "shell")
     (perl-mode    . "shell")
