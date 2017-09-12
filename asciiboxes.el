@@ -35,6 +35,8 @@
   '((c-mode            . "c-cmt2")
     (c++-mode          . "c-cmt2")
     (java-mode         . "java-cmt")
+    (js-mode           . "java-cmt")
+    (js2-mode          . "java-cmt")
     (html-mode         . "html-cmt")
     (sh-mode           . "pound-cmt")
     (perl-mode         . "pound-cmt")
