@@ -748,6 +748,90 @@ END lisp-cmt
 
 #============================================================================
 
+BOX lisp-slim-commapos
+
+author "Troy Pracy"
+created "Sept 2017"
+revision "0.1"
+
+sample
+;; ,-------------------------------------------------------------,
+;; | Sample Text Sample Text Sample Text Sample Text Sample Text |
+;; | Sample Text Sample Text Sample Text Sample Text Sample Text |
+;; | Sample Text Sample Text Sample Text                         |
+;; '-------------------------------------------------------------'
+ends
+
+shapes {
+    nw (";; ,") nnw ("-") n ("-") ne (",")
+     w (";; |")                    e ("|")
+    sw (";; '") ssw ("-") s ("-") se ("'")
+}
+
+padding { h 1 }
+
+elastic (n,e,s,w)
+
+END lisp-slim-commapos
+
+# ============================================================================
+
+BOX lisp-box
+
+author "Troy Pracy"
+created "Sept 2017"
+revision "0.1"
+
+sample
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Sample Text Sample Text Sample Text Sample Text Sample Text ;;
+;; Sample Text Sample Text Sample Text Sample Text Sample Text ;;
+;; Sample Text Sample Text Sample Text                         ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ends
+
+shapes {
+    nw (";;") nnw (";") n (";") ne (";;")
+     w (";;")                    e (";;")
+    sw (";;") ssw (";") s (";") se (";;")
+}
+
+padding { h 1 }
+
+elastic (n,e,s,w)
+
+END lisp-box
+
+# ============================================================================
+
+BOX lisp-starbox
+
+author "Troy Pracy"
+created "Sept 2017"
+revision "0.1"
+
+sample
+;; ***************************************************************
+;; * Sample Text Sample Text Sample Text Sample Text Sample Text *
+;; * Sample Text Sample Text Sample Text Sample Text Sample Text *
+;; * Sample Text Sample Text Sample Text                         *
+;; ***************************************************************
+ends
+
+shapes {
+    nw (";; *") nnw ("*") n ("*") ne ("*")
+     w (";; *")                    e ("*")
+    sw (";; *") ssw ("*") s ("*") se ("*")
+}
+
+padding { h 1 }
+
+elastic (n,e,s,w)
+
+END lisp-starbox
+
+# ============================================================================
+
 BOX ccel
 
 author   "Elmar Loos <elInfo@gmx.net>"
