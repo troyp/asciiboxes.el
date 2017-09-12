@@ -123,7 +123,10 @@ design for text-mode is used and then commented in a separate step.")
    (list (if (region-active-p) (region-beginning) (line-beginning-position))
          (if (region-active-p) (region-end) (line-end-position))
          (asciiboxes--read-box-design)))
-   (let ((cmd (format "%s -d %s" asciiboxes-boxes-command design)))
+  (let ((cmd (format "%s -f %s -d %s"
+                     asciiboxes-boxes-command
+                     asciiboxes-config-file
+                     design)))
      (shell-command-on-region beg end cmd nil t)
      (message cmd)))
 
@@ -136,7 +139,10 @@ design is listed, a type may be chosen in the minibuffer."
    (list (if (region-active-p) (region-beginning) (line-beginning-position))
          (if (region-active-p) (region-end) (line-end-position))))
   (let* ((design (asciiboxes--heading-design-by-mode-or-read))
-         (cmd    (format "%s -d %s" asciiboxes-boxes-command design))
+         (cmd    (format "%s -f %s -d %s"
+                         asciiboxes-boxes-command
+                         asciiboxes-config-file
+                         design))
          (beg-marker (make-marker))
          (end-marker (make-marker)))
     (set-marker beg-marker beg)
